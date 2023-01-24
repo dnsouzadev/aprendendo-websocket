@@ -7,9 +7,10 @@ io.on("connection", (stream) => {
     stream.on("begin", (data) => {
         console.log(data)
     })
-    
+
     stream.on("value input", (data) => {
         console.log(data)
+        stream.emit("result", data)
     })
 })
 
