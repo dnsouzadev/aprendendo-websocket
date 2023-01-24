@@ -10,8 +10,8 @@
 
 <body>
     <h1>teste</h1>
-    <input type="text" name="" id="word">
-    <button onclick="send()">Send</button>
+    <input type="text" name="" id="word" oninput="send()">
+    <button onclick="">Send</button>
     <hr>
     <p id="result"></p>
 </body>
@@ -20,6 +20,11 @@
     crossorigin="anonymous"></script>
 <script>
     const socket = io("http://localhost:3000")
+
+    socket.on("disconnet", () => {
+        connsole.log("disconnect sucessfully")
+    })
+
     socket.emit("begin", { nome: "daniel" })
 
     socket.on("result", (data) => {

@@ -4,6 +4,12 @@ const http = require("http").createServer(app)
 const io = require("socket.io")(http)
 
 io.on("connection", (stream) => {
+
+    stream.on("disconnect", () => {
+        console.log("X disconnected: ", stream.id)
+    })
+
+
     stream.on("begin", (data) => {
         console.log(data)
     })
