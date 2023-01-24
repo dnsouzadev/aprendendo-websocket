@@ -10,6 +10,8 @@
 
 <body>
     <h1>teste</h1>
+    <input type="text" name="" id="word">
+    <button onclick="send()">Send</button>
 </body>
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"
     integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
@@ -17,6 +19,11 @@
 <script>
     const socket = io("http://localhost:3000")
     socket.emit("begin", { nome: "daniel" })
+
+    function send() {
+        const input = document.getElementById("word")
+        socket.emit("value input", { value: input.value })
+    }
 </script>
 
 </html>
