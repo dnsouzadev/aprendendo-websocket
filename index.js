@@ -3,6 +3,11 @@ const app = express()
 const http = require("http").createServer(app)
 const io = require("socket.io")(http)
 
+io.on("connection", (stream) => {
+    console.log(stream)
+    console.log(stream.id)
+})
+
 app.set("view engine", "ejs")
 
 app.get("/", (req, res) => {
